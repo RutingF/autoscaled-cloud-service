@@ -5,6 +5,20 @@ An autoscaled cloud service leveraging GCP (Google Cloud Platform):
 - **Infrastructure**: Uses **Terraform** to provision cloud resources, including internal and external **load blancers**. 
 
 
+## Infrastructure 
+This repo uses **Terraform** to provision cloud infrastructure on GCP, including **Network Load Balancer** and **Application Load Balancer**. 
+
+To deploy the infrastructure, run the following commands: 
+```sh
+terraform init
+terraform apply
+```
+
+To tear down the infrastructure:
+```sh
+terraform destroy
+```
+
 ## Backend 
 
 Backend service utlizes **gRPC** to enable communication between **distributed systems**, and designed to work with **Network Load Balancers**. 
