@@ -30,9 +30,11 @@ resource "google_compute_firewall" "allow-frontend-http" {
   name    = "allow-frontend-http"
   network = google_compute_network.vpc_network.id
 
+
+// temporarily allow all SSH traffic for testing purposes
   allow {
     protocol = "tcp"
-    ports    = ["80", "5001"] # HTTP (Frontend) and Flask port
+    ports    = ["80", "22", "5001"] # HTTP (Frontend) and Flask port
   }
 
   source_ranges = ["0.0.0.0/0"]
@@ -45,11 +47,12 @@ resource "google_compute_firewall" "allow-backend-grpc" {
 
   allow {
     protocol = "tcp"
-    ports    = ["5000"]
+    ports    = ["22", "5000"]
   }
 
   source_ranges = ["0.0.0.0/0"]
 }
+
 
 // Define regional health check for backend
 resource "google_compute_region_health_check" "backend_health_check" {
